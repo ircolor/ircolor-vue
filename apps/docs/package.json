@@ -16,7 +16,6 @@
   "license": "ISC",
   "devDependencies": {
     "@histoire/plugin-vue": "^0.15.8",
-    "histoire": "^0.15.9",
-    "eslint-config-custom": "workspace:*"
+    "histoire": "^0.15.9"
   }
 }
