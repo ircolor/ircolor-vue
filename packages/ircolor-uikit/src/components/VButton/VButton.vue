@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-
+import { VIcon } from '../VIcon';
 //#region INTERFACES
 interface VButtonProps {
   label?: string
@@ -115,7 +115,7 @@ const onlyIconClass = computed(() => {
     class="flex items-center gap-2 justify-between font-medium w-full"
   >
     {{ props.label }}
-    <slot name="icon"></slot>
+    <VIcon icon="heart"></VIcon>
   </button>
 </template>
 

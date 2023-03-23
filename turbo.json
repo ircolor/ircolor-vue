@@ -11,6 +11,10 @@
     },
     "dev": {
       "cache": false
+     
+    },
+    "ircolor-uikit#dev": {
+      "dependsOn": ["ircolor-icons#build"]
     }
   }
 }

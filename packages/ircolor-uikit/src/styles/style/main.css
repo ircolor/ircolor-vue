@@ -1,4 +1,5 @@
 @import "../font/peyda/peyda.css";
+@import 'ircolor-icons/pack/css/ircolor-icons.css'; 
 
 @tailwind base;
 @tailwind components;
