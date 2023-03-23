@@ -1,0 +1,18 @@
+{
+    "dest": "pack",
+    "icons": "icons",
+    "fontName": "ircolor-icons",
+    "css": true,
+    "cssDest": "pack/css/ircolor-icons.css",
+    "cssFontsUrl": "../fonts/",
+    "types": [
+        "woff",
+        "woff2",
+        "ttf",
+        "eot"
+    ],
+    "templateOptions": {
+        "classPrefix": "irc-",
+        "baseSelector": ".irc"
+    }
+}

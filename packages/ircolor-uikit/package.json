@@ -1,7 +1,7 @@
 {
   "name": "ircolor-uikit",
   "version": "0.0.0",
-  "main": "./install.ts",
+  "main": "./src/entry-bundler.ts",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -11,7 +11,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "ircolor-icons" : "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^18.14.2",
