@@ -1,0 +1,22 @@
+@font-face {
+	font-family: "ircolor-icons";
+	src: url("../fonts/ircolor-icons.eot?1b2b9845e0fcb129326204d6edc341fb?#iefix") format("embedded-opentype"),
+url("../fonts/ircolor-icons.woff2?1b2b9845e0fcb129326204d6edc341fb") format("woff2"),
+url("../fonts/ircolor-icons.woff?1b2b9845e0fcb129326204d6edc341fb") format("woff"),
+url("../fonts/ircolor-icons.ttf?1b2b9845e0fcb129326204d6edc341fb") format("truetype");
+}
+
+.irc {
+	line-height: 1;
+}
+
+.irc:before {
+	font-family: ircolor-icons !important;
+	font-style: normal;
+	font-weight: normal !important;
+	vertical-align: top;
+}
+
+.irc-heart:before {
+	content: "\f101";
+}

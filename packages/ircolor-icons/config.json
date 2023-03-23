@@ -1,9 +1,9 @@
 {
-    "dest": "pack",
+    "dest": "dist",
     "icons": "icons",
     "fontName": "ircolor-icons",
     "css": true,
-    "cssDest": "pack/css/ircolor-icons.css",
+    "cssDest": "dist/css/ircolor-icons.css",
     "cssFontsUrl": "../fonts/",
     "types": [
         "woff",
