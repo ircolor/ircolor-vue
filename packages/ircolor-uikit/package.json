@@ -11,7 +11,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "ircolor-icons" : "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^18.14.2",
