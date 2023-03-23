@@ -1,7 +1,7 @@
 {
   "name": "ircolor-uikit",
   "version": "0.0.0",
-  "main": "./install.ts",
+  "main": "./src/entry-bundler.ts",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
