@@ -6,6 +6,7 @@ interface VButtonProps {
   label?: string
   variant?: 'primary' | 'secondary' | 'danger' | 'warning'
   iconPosition?: 'right' | 'left' | 'top' | 'button' | 'bottom' | ''
+  icon?: string
   type?: 'fill' | 'outline'
   rounded?: '' | '2xl' | 'lg' | 'full'
   disabled?: boolean
