@@ -1,21 +1,23 @@
 {
   "name": "docs",
-  "version": "1.0.0",
   "private": true,
-  "description": "",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "histoire dev",
     "build": "histoire build",
     "preview": "histoire preview"
   },
   "dependencies": {
+    "vue": "^3.2.47",
     "ircolor-uikit": "workspace:*"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@histoire/plugin-vue": "^0.15.8",
-    "histoire": "^0.15.9"
+    "@vitejs/plugin-vue": "^4.1.0",
+    "histoire": "^0.15.9",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0",
+    "vue-tsc": "^1.2.0"
   }
 }
