@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+// #region INTERFACE
 interface VIconProps {
   icon: string
   color?: ''
@@ -14,6 +15,7 @@ const props = withDefaults(defineProps<VIconProps>(), {
   tag:'i',
 })
 
+// #endregion
 </script>
 
 <template>
@@ -25,4 +27,4 @@ const props = withDefaults(defineProps<VIconProps>(), {
       v-bind="props.attributes"
     >
     </component>
-  </template>
+</template>

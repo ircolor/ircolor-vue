@@ -16,6 +16,7 @@ interface VButtonProps {
 //#region PROPS
 const props = withDefaults(defineProps<VButtonProps>(), {
   label: '',
+  icon:'',
   variant: 'primary',
   rounded: '2xl',
   type: 'fill',
@@ -116,7 +117,7 @@ const onlyIconClass = computed(() => {
     class="flex items-center gap-2 justify-between font-medium w-full"
   >
     {{ props.label }}
-    <VIcon icon="heart"></VIcon>
+    <VIcon :icon="props.icon"></VIcon>
   </button>
 </template>
 

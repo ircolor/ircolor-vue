@@ -5,11 +5,8 @@
 
 <template>
   <main class="flex justify-center items-center h-screen">
-    <div class="w-50">
-      <v-button label="پالت رنگی بسازید" type="fill">
-        <!-- <template #icon>
-          <TestIcon/>
-        </template> -->
+    <div>
+      <v-button label="پالت رنگی بسازید" type="fill" icon="arrowLeft">
       </v-button>
     </div>
   </main>
