@@ -16,10 +16,6 @@
     "ircolor-uikit#build": {
       "inputs": []
     },
-    "ircolor-uikit#dev": {
-      "dependsOn": ["ircolor-icons#build","build"],
-      "inputs": []
-    },
     "docs#dev": {
       "dependsOn": ["ircolor-uikit#build"]
     }

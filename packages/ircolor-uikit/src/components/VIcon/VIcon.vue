@@ -3,16 +3,15 @@
 interface VIconProps {
   icon: string
   color?: ''
-  tag?:'i'
   attributes?:''
 }
 //#endregion
 
 //#region PROPS
 const props = withDefaults(defineProps<VIconProps>(), {
+  icon: '',
   color: '',
   attributes:'',
-  tag:'i',
 })
 
 // #endregion
@@ -20,10 +19,8 @@ const props = withDefaults(defineProps<VIconProps>(), {
 
 <template>
     <component
-      :is="props.tag ? props.tag : 'i'"
-      class="irc"
-      :class="'irc-' + props.icon? 'irc-' + props.icon: ''"
-      aria-hidden="true"
+      :is="props.icon"
+      :color="props.color"
       v-bind="props.attributes"
     >
     </component>
