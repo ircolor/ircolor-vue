@@ -1,7 +1,8 @@
 <script lang="ts" setup>
+import TestIcon from './Icons/TestIcon.vue';
 // #region INTERFACE
 interface VIconProps {
-  icon: string
+  icon: any,
   color?: ''
   attributes?:''
 }
@@ -9,7 +10,7 @@ interface VIconProps {
 
 //#region PROPS
 const props = withDefaults(defineProps<VIconProps>(), {
-  icon: '',
+  icon: TestIcon,
   color: '',
   attributes:'',
 })
