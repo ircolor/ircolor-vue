@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { VIcon } from '../VIcon';
+import { VIcon } from '../VIcon'
 //#region INTERFACES
 interface VButtonProps {
   label?: string
   variant?: 'primary' | 'secondary' | 'danger' | 'warning'
-  iconPosition?: 'right' | 'left' | 'top' | 'button' | 'bottom' | ''
+  iconPosition?: 'right' | 'left' | 'top' | 'bottom'
   icon?: string
   type?: 'fill' | 'outline'
-  rounded?: '' | '2xl' | 'lg' | 'full'
+  rounded?: '2xl' | 'lg' | 'full'
   disabled?: boolean
 }
 //#endregion
@@ -16,7 +16,7 @@ interface VButtonProps {
 //#region PROPS
 const props = withDefaults(defineProps<VButtonProps>(), {
   label: '',
-  icon:'',
+  icon: '',
   variant: 'primary',
   rounded: '2xl',
   type: 'fill',
@@ -105,7 +105,7 @@ const iconPositionClass = computed(() => {
 })
 
 const onlyIconClass = computed(() => {
-    // when only we have icon
+  // when only we have icon
   return props.label ? 'py-3.5 px-5' : 'p-3.5'
 })
 //#endregion
