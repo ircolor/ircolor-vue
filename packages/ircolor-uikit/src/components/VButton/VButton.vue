@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { VIcon } from '../VIcon'
 //#region INTERFACES
 interface VButtonProps {
   label?: string
   variant?: 'primary' | 'secondary' | 'danger' | 'warning'
   iconPosition?: 'right' | 'left' | 'top' | 'bottom'
-  icon?: string
   type?: 'fill' | 'outline'
   rounded?: '2xl' | 'lg' | 'full'
   disabled?: boolean
@@ -16,7 +14,6 @@ interface VButtonProps {
 //#region PROPS
 const props = withDefaults(defineProps<VButtonProps>(), {
   label: '',
-  icon: '',
   variant: 'primary',
   rounded: '2xl',
   type: 'fill',
@@ -117,7 +114,7 @@ const onlyIconClass = computed(() => {
     class="flex items-center gap-2 justify-between font-medium w-full"
   >
     {{ props.label }}
-    <VIcon :icon="props.icon"></VIcon>
+    <slot name='icon'/>
   </button>
 </template>
 
