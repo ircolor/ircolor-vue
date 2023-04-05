@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+
 //#region INTERFACES
 interface VButtonProps {
   label?: string
@@ -7,6 +8,7 @@ interface VButtonProps {
   iconPosition?: 'right' | 'left' | 'top' | 'bottom'
   type?: 'fill' | 'outline'
   rounded?: '2xl' | 'lg' | 'full'
+  hasIcon?: boolean
   disabled?: boolean
 }
 //#endregion
@@ -18,6 +20,7 @@ const props = withDefaults(defineProps<VButtonProps>(), {
   rounded: '2xl',
   type: 'fill',
   iconPosition: 'left',
+  hasIcon: false,
   disabled: false
 })
 // #endregion
@@ -48,16 +51,16 @@ const typeClass = computed(() => {
   if (props.type === 'fill') {
     switch (props.variant) {
       case 'secondary':
-        buttonType = 'bg-white text-neutral-800'
+        buttonType = 'border-2 border-white bg-white text-neutral-800'
         break
       case 'warning':
-        buttonType = 'bg-warning text-neutral-800'
+        buttonType = 'border-2 border-warning bg-warning text-neutral-800'
         break
       case 'danger':
-        buttonType = 'bg-danger text-neutral-800'
+        buttonType = 'border-2 border-danger bg-danger text-neutral-800'
         break
       default:
-        buttonType = 'bg-primary text-neutral-800'
+        buttonType = 'border-2 border-primary bg-primary text-neutral-800'
         break
     }
     return buttonType
@@ -65,16 +68,16 @@ const typeClass = computed(() => {
   if (props.type === 'outline') {
     switch (props.variant) {
       case 'secondary':
-        buttonType = 'bg-transparent border border-stone-300 text-neutral-800'
+        buttonType = 'bg-transparent border-2 border-neutral-700 text-neutral-800'
         break
       case 'warning':
-        buttonType = 'bg-transparent border border-warning text-neutral-800'
+        buttonType = 'bg-transparent border-2 border-warning text-neutral-800'
         break
       case 'danger':
-        buttonType = 'bg-transparent border border-danger text-neutral-800'
+        buttonType = 'bg-transparent border-2 border-danger text-neutral-800'
         break
       default:
-        buttonType = 'bg-transparent border border-primary text-neutral-800'
+        buttonType = 'bg-transparent border-2 border-primary text-neutral-800'
         break
     }
     return buttonType
@@ -101,6 +104,10 @@ const iconPositionClass = computed(() => {
   return iconPosition
 })
 
+const withIconClass = computed(()=>{
+  return props.hasIcon ? 'flex items-center gap-2 justify-between' :''
+});
+
 const onlyIconClass = computed(() => {
   // when only we have icon
   return props.label ? 'py-3.5 px-5' : 'p-3.5'
@@ -110,11 +117,12 @@ const onlyIconClass = computed(() => {
 
 <template>
   <button
-    :class="[roundedClass, typeClass, iconPositionClass, onlyIconClass]"
-    class="flex items-center gap-2 justify-between font-medium w-full"
+    :class="[roundedClass, typeClass, iconPositionClass, onlyIconClass, withIconClass]"
+    class="font-medium w-full"
+    :disabled="props.disabled"
   >
     {{ props.label }}
-    <slot name='icon'/>
+    <slot v-if="props.hasIcon" name='icon'/>
   </button>
 </template>
 
