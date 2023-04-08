@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// NOTE: This component is useless until finding a suitable solution to use the icon font
+// import { VIcon } from '../VIcon';
 import { computed } from 'vue'
 
 //#region INTERFACES
@@ -118,11 +120,14 @@ const onlyIconClass = computed(() => {
 <template>
   <button
     :class="[roundedClass, typeClass, iconPositionClass, onlyIconClass, withIconClass]"
-    class="font-medium w-full"
+    class="w-full"
     :disabled="props.disabled"
   >
     {{ props.label }}
+    <!-- ? Test Icon -->
     <slot v-if="props.hasIcon" name='icon'/>
+    
+    <!-- <VIcon icon="heart"></VIcon> -->
   </button>
 </template>
 

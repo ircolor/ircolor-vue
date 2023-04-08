@@ -1,4 +1,4 @@
-@import "../font/peyda/peyda.css";
+@import "./font/peyda/peyda.css";
 
 @tailwind base;
 @tailwind components;
