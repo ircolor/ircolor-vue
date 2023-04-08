@@ -9,6 +9,7 @@ const iconPosition = ref('')
 const icon = ref('')
 const rounded = ref('')
 const disabled = ref(false)
+const hasIcon = ref(false)
 </script>
 <template>
   <Story title="Button">
@@ -22,18 +23,52 @@ const disabled = ref(false)
           :icon="icon"
           :rounded="rounded"
           :disabled="disabled"
+          :hasIcon="hasIcon"
           @click="logEvent('click', $event)"
         >
         </v-button>
       </template>
       <template #controls="{ state }">
         <HstText v-model="state.label" title="label" />
-        <HstText v-model="state.type" title="type" />
-        <HstText v-model="state.variant" title="variant" />
-        <HstText v-model="state.iconPosition" title="iconPosition" />
-        <HstText v-model="state.icon" title="icon" />
-        <HstText v-model="state.rounded" title="rounded" />
+        <HstSelect
+          v-model="state.type"
+          title="type"
+          :options="{
+            fill: 'fill',
+            outline: 'outline'
+          }"
+        />
+        <HstSelect
+          v-model="state.variant"
+          title="variant"
+          :options="{
+            primary: 'primary',
+            danger: 'danger',
+            secondary: 'secondary',
+            warning: 'warning'
+          }"
+        />
+        <HstSelect
+          v-model="state.iconPosition"
+          title="iconPosition"
+          :options="{
+            right: 'right',
+            left: 'left',
+            top: 'top',
+            bottom: 'bottom'
+          }"
+        />
+        <HstSelect
+          v-model="state.rounded"
+          title="rounded"
+          :options="{
+            '2xl': '2xl',
+            lg: 'lg',
+            full: 'full'
+          }"
+        />
         <HstCheckbox v-model="state.disabled" title="disabled" />
+        <HstCheckbox v-model="state.hasIcon" title="hasIcon" />
       </template>
     </Variant>
   </Story>
