@@ -3,6 +3,6 @@ import App from './App.vue'
 
 import '../src/styles/main.css'
 
-import * as uipack from "../src/entry-bundler"
+import * as uipack from "./entry-bundler"
 
 createApp(App).use(uipack.install).mount('#app')
