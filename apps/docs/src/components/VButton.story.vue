@@ -23,7 +23,6 @@ const state = reactive({
 <template>
   <Story title="VButton" :layout="{ type: 'single', iframe: true }">
     <Variant title="default" :state="state">
-      <template #default="{ state }">
         <v-button
           :label="state.label"
           :type="state.type"
@@ -38,7 +37,6 @@ const state = reactive({
             <TestIcon />
           </template>
         </v-button>
-      </template>
 
       <template #controls>
         Content: <input type="text" v-model="state.label" />
