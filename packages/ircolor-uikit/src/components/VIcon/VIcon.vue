@@ -1,28 +1,33 @@
+<!-- ? This component is useless until finding a suitable solution to use the icon font -->
+
 <script lang="ts" setup>
+// #region INTERFACE
 interface VIconProps {
   icon: string
+  tag?: 'i'
   color?: ''
-  tag?:'i'
-  attributes?:''
+  attributes?: ''
 }
 //#endregion
 
 //#region PROPS
 const props = withDefaults(defineProps<VIconProps>(), {
+  tag: 'i',
   color: '',
-  attributes:'',
-  tag:'i',
+  attributes: ''
 })
 
+// #endregion
 </script>
 
 <template>
-    <component
-      :is="props.tag ? props.tag : 'i'"
-      class="irc"
-      :class="'irc-' + props.icon? 'irc-' + props.icon: ''"
-      aria-hidden="true"
-      v-bind="props.attributes"
-    >
-    </component>
-  </template>
+  <component
+    :is="props.tag ? props.tag : 'i'"
+    class="irc"
+    :class="'irc-' + props.icon ? 'irc-' + props.icon : ''"
+    :color="props.color"
+    v-bind="props.attributes"
+    aria-hidden="true"
+  >
+  </component>
+</template>

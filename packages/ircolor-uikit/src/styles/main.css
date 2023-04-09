@@ -1,13 +1,11 @@
-/* @import "../font/peyda/peyda.css"; */
-@import 'ircolor-icons/dist/css/ircolor-icons.css'; 
+@import "./font/peyda/peyda.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-/* @layer base {
+@layer base {
   html {
     font-family: Peyda, system-ui, sans-serif;
   }
-} */
+}
