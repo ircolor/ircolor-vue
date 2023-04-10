@@ -2,11 +2,12 @@
 import { ref } from 'vue'
 import { logEvent } from 'histoire/client'
 
-const label = ref('Click me')
-const variant = ref('danger')
-const type = ref('outline')
+const label = ref('پالت رنگی بسازید')
+const variant = ref('secondary')
+const type = ref('fill')
 const iconPosition = ref('')
 const icon = ref('')
+const className = ref('w-52')
 const rounded = ref('')
 const disabled = ref(false)
 const hasIcon = ref(false)
@@ -14,24 +15,28 @@ const hasIcon = ref(false)
 <template>
   <Story title="Button">
     <Variant title="number field" auto-props-disabled>
-      <template #default="{ state }">
+      <template #default>
         <v-button
           :label="label"
           :type="type"
           :variant="variant"
           :iconPosition="iconPosition"
           :icon="icon"
+          :class="className"
           :rounded="rounded"
           :disabled="disabled"
           :hasIcon="hasIcon"
           @click="logEvent('click', $event)"
         >
         </v-button>
+        <!-- <v-button class="w-52" label="پالت رنگی بسازید" variant="secondary">
+      </v-button> -->
       </template>
-      <template #controls="{ state }">
-        <HstText v-model="state.label" title="label" />
+      <template #controls>
+        <HstText v-model="label" title="label" />
+        <HstText v-model="className" title="class" />
         <HstSelect
-          v-model="state.type"
+          v-model="type"
           title="type"
           :options="{
             fill: 'fill',
@@ -39,7 +44,7 @@ const hasIcon = ref(false)
           }"
         />
         <HstSelect
-          v-model="state.variant"
+          v-model="variant"
           title="variant"
           :options="{
             primary: 'primary',
@@ -49,7 +54,7 @@ const hasIcon = ref(false)
           }"
         />
         <HstSelect
-          v-model="state.iconPosition"
+          v-model="iconPosition"
           title="iconPosition"
           :options="{
             right: 'right',
@@ -59,7 +64,7 @@ const hasIcon = ref(false)
           }"
         />
         <HstSelect
-          v-model="state.rounded"
+          v-model="rounded"
           title="rounded"
           :options="{
             '2xl': '2xl',
@@ -67,8 +72,8 @@ const hasIcon = ref(false)
             full: 'full'
           }"
         />
-        <HstCheckbox v-model="state.disabled" title="disabled" />
-        <HstCheckbox v-model="state.hasIcon" title="hasIcon" />
+        <HstCheckbox v-model="disabled" title="disabled" />
+        <HstCheckbox v-model="hasIcon" title="hasIcon" />
       </template>
     </Variant>
   </Story>
