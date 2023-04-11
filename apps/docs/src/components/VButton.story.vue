@@ -11,14 +11,7 @@ const state = reactive({
   hasIcon: false,
   disabled: false
 })
-// const label = ref('Click me')
-// const variant = ref('danger')
-// const type = ref('outline')
-// const iconPosition = ref('')
-// const icon = ref('')
-// const rounded = ref('')
-// const disabled = ref(false)
-// const hasIcon = ref(false)
+
 </script>
 <template>
   <Story title="VButton" :layout="{ type: 'single', iframe: true }">
