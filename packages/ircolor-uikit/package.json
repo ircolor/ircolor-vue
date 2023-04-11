@@ -1,13 +1,13 @@
 {
   "name": "ircolor-uikit",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "scripts": {
-    "dev": "vite",
+    "dev": "run-p type-check build-only",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
-    "build-only": "vite build --emptyOutDir",
+    "build-only": "vite build --emptyOutDir --watch",
     "type-check": "vue-tsc --noEmit",
     "format": "prettier --write src/"
   },

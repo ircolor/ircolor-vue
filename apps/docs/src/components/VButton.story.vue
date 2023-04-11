@@ -11,7 +11,6 @@ const state = reactive({
   hasIcon: false,
   disabled: false
 })
-
 </script>
 <template>
   <Story title="VButton" :layout="{ type: 'single', iframe: true }">
