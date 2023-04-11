@@ -7,7 +7,7 @@ import TestIcon from '../src/components/VIcon/Icons/TestIcon.vue'
   <main class="flex justify-center items-center h-screen gap-2 bg-slate-100">
     <div class="flex flex-col gap-2">
       <p>Fill</p>
-      <v-button class="w-52" label="پالت رنگی بسازید" variant="primary" iconPosition="top" hasIcon>
+      <v-button class="w-52" label="پالت رنگی بسازید" variant="primary" disabled hasIcon>
         <template #icon>
           <TestIcon />
         </template>

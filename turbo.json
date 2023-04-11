@@ -12,8 +12,8 @@
     "dev": {
       "cache": false
     },
-    "ircolor-uikit#build": {
-      "inputs": []
+    "docs#dev": {
+      "dependsOn": ["ircolor-uikit#build"]
     }
   }
 }

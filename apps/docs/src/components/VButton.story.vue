@@ -1,42 +1,43 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { logEvent } from 'histoire/client'
 
-const label = ref('پالت رنگی بسازید')
-const variant = ref('secondary')
-const type = ref('fill')
-const iconPosition = ref('')
-const icon = ref('')
-const className = ref('w-52')
-const rounded = ref('')
-const disabled = ref(false)
-const hasIcon = ref(false)
+const state = reactive({
+  label: 'متن تست',
+  variant: 'primary',
+  rounded: '2xl',
+  type: 'fill',
+  iconPosition: 'left',
+  hasIcon: false,
+  disabled: false
+})
 </script>
 <template>
-  <Story title="Button">
-    <Variant title="number field" auto-props-disabled>
-      <template #default>
+  <Story title="VButton" :layout="{ type: 'single', iframe: true }">
+    <Variant title="default" :state="state">
         <v-button
-          :label="label"
-          :type="type"
-          :variant="variant"
-          :iconPosition="iconPosition"
-          :icon="icon"
-          :class="className"
-          :rounded="rounded"
-          :disabled="disabled"
-          :hasIcon="hasIcon"
+          :label="state.label"
+          :type="state.type"
+          :variant="state.variant"
+          :iconPosition="state.iconPosition"
+          :rounded="state.rounded"
+          :disabled="state.disabled"
+          :hasIcon="state.hasIcon"
           @click="logEvent('click', $event)"
         >
+          <template #icon>
+            <TestIcon />
+          </template>
         </v-button>
-        <!-- <v-button class="w-52" label="پالت رنگی بسازید" variant="secondary">
-      </v-button> -->
-      </template>
+
       <template #controls>
-        <HstText v-model="label" title="label" />
-        <HstText v-model="className" title="class" />
+        Content: <input type="text" v-model="state.label" />
+        Disabled: <input type="checkbox" v-model="state.disabled" />
+      </template>
+      <!-- <template #controls="{ state }">
+        <HstText v-model="state.label" title="label" />
         <HstSelect
-          v-model="type"
+          v-model="state.type"
           title="type"
           :options="{
             fill: 'fill',
@@ -44,7 +45,7 @@ const hasIcon = ref(false)
           }"
         />
         <HstSelect
-          v-model="variant"
+          v-model="state.variant"
           title="variant"
           :options="{
             primary: 'primary',
@@ -54,7 +55,7 @@ const hasIcon = ref(false)
           }"
         />
         <HstSelect
-          v-model="iconPosition"
+          v-model="state.iconPosition"
           title="iconPosition"
           :options="{
             right: 'right',
@@ -64,7 +65,7 @@ const hasIcon = ref(false)
           }"
         />
         <HstSelect
-          v-model="rounded"
+          v-model="state.rounded"
           title="rounded"
           :options="{
             '2xl': '2xl',
@@ -72,9 +73,9 @@ const hasIcon = ref(false)
             full: 'full'
           }"
         />
-        <HstCheckbox v-model="disabled" title="disabled" />
-        <HstCheckbox v-model="hasIcon" title="hasIcon" />
-      </template>
+        <HstCheckbox v-model="state.disabled" title="disabled" />
+        <HstCheckbox v-model="state.hasIcon" title="hasIcon" />
+      </template> -->
     </Variant>
   </Story>
 </template>
