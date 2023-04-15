@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import VButton from '../src/components/VButton/VButton.vue'
-import TestIcon from '../src/components/VIcon/Icons/TestIcon.vue'
+import TestIcon from './components/VIcon/TestIcon.vue'
 </script>
 
 <template>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
 import { logEvent } from 'histoire/client'
-
-const initState = reactive({
+import { VButton } from 'ircolor-uikit/src/components/index'
+import { TestIcon } from 'ircolor-uikit/src/components/'
+const buttonStates = () => ({
   label: 'متن تست',
   variant: 'primary',
   rounded: '2xl',
@@ -13,9 +13,9 @@ const initState = reactive({
 })
 </script>
 <template>
-  <Story title="VButton" :layout="{ type: 'single', iframe: true }">
-    <Variant title="Playground" :init-state="initState">
-      <template  #default="{ state }">
+  <Story title="VButton" :layout="{ type: 'grid', width:'25%' }">
+    <Variant title="Playground" :init-state="buttonStates" auto-props-disabled>
+      <template #default="{ state }">
         <VButton
           :label="state.label"
           :type="state.type"
@@ -27,7 +27,7 @@ const initState = reactive({
           @click="logEvent('click', $event)"
         >
           <template #icon v-if="state.hasIcon">
-            <VIcon />
+            <TestIcon />
           </template>
         </VButton>
       </template>
