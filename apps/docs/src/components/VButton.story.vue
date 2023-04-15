@@ -13,7 +13,7 @@ const buttonStates = () => ({
 })
 </script>
 <template>
-  <Story title="VButton" :layout="{ type: 'grid', width:'25%' }">
+  <Story title="VButton" :layout="{ type: 'grid', width: '25%' }">
     <Variant title="Playground" :init-state="buttonStates" auto-props-disabled>
       <template #default="{ state }">
         <VButton
@@ -43,6 +43,16 @@ const buttonStates = () => ({
         }"
       />
       <HstSelect
+        v-model="state.variant"
+        title="variant"
+        :options="{
+          primary: 'primary',
+          secondary: 'secondary',
+          danger: 'danger',
+          warning: 'warning'
+        }"
+      />
+      <HstSelect
         v-model="state.iconPosition"
         title="icon position"
         :options="{
@@ -50,6 +60,16 @@ const buttonStates = () => ({
           left: 'left',
           top: 'top',
           bottom: 'bottom'
+        }"
+      />
+      <HstSelect
+        v-model="state.rounded"
+        title="rounded"
+        :options="{
+          '2xl': '2xl',
+          lg: 'lg',
+          full: 'full',
+          rounded: 'rounded'
         }"
       />
       <HstCheckbox v-model="state.disabled" title="disabled" />

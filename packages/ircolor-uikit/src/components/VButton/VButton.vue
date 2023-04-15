@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // NOTE: This component is useless until finding a suitable solution to use the icon font
 // import { VIcon } from '../VIcon';
-import { computed } from 'vue'
-
+import { computed,ref } from 'vue'
+import { roundedClass } from '../../shared/computed';
 //#region INTERFACES
 interface VButtonProps {
   label?: string
@@ -28,25 +28,26 @@ const props = withDefaults(defineProps<VButtonProps>(), {
 // #endregion
 
 //#region COMPUTED
-const roundedClass = computed(() => {
-  let roundedValue = ''
-  switch (props.rounded) {
-    case '2xl':
-      roundedValue = 'rounded-2xl'
-      break
-    case 'lg':
-      roundedValue = 'rounded-lg'
-      break
-    case 'full':
-      roundedValue = 'rounded-full'
-      break
+const borderRadius = ref(roundedClass(props.rounded))
+// const roundedClass = computed(() => {
+//   let roundedValue = ''
+//   switch (props.rounded) {
+//     case '2xl':
+//       roundedValue = 'rounded-2xl'
+//       break
+//     case 'lg':
+//       roundedValue = 'rounded-lg'
+//       break
+//     case 'full':
+//       roundedValue = 'rounded-full'
+//       break
 
-    default:
-      roundedValue = 'rounded'
-      break
-  }
-  return roundedValue
-})
+//     default:
+//       roundedValue = 'rounded'
+//       break
+//   }
+//   return roundedValue
+// })
 
 const typeClass = computed(() => {
   let buttonType = ''
@@ -119,8 +120,8 @@ const onlyIconClass = computed(() => {
 
 <template>
   <button
-    :class="[roundedClass, typeClass, iconPositionClass, onlyIconClass, withIconClass]"
-    class="w-full"
+    :class="[borderRadius, typeClass, iconPositionClass, onlyIconClass, withIconClass]"
+    class="w-full font-medium"
     :disabled="props.disabled"
   >
     {{ props.label }}
