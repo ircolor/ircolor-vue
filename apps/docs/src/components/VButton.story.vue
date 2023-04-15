@@ -2,7 +2,7 @@
 import { reactive, ref } from 'vue'
 import { logEvent } from 'histoire/client'
 
-const state = reactive({
+const initState = reactive({
   label: 'متن تست',
   variant: 'primary',
   rounded: '2xl',
@@ -14,8 +14,9 @@ const state = reactive({
 </script>
 <template>
   <Story title="VButton" :layout="{ type: 'single', iframe: true }">
-    <Variant title="default" :state="state">
-        <v-button
+    <Variant title="Playground" :init-state="initState">
+      <template  #default="{ state }">
+        <VButton
           :label="state.label"
           :type="state.type"
           :variant="state.variant"
@@ -25,58 +26,35 @@ const state = reactive({
           :hasIcon="state.hasIcon"
           @click="logEvent('click', $event)"
         >
-          <template #icon>
-            <TestIcon />
+          <template #icon v-if="state.hasIcon">
+            <VIcon />
           </template>
-        </v-button>
-
-      <template #controls>
-        Content: <input type="text" v-model="state.label" />
-        Disabled: <input type="checkbox" v-model="state.disabled" />
+        </VButton>
       </template>
-      <!-- <template #controls="{ state }">
-        <HstText v-model="state.label" title="label" />
-        <HstSelect
-          v-model="state.type"
-          title="type"
-          :options="{
-            fill: 'fill',
-            outline: 'outline'
-          }"
-        />
-        <HstSelect
-          v-model="state.variant"
-          title="variant"
-          :options="{
-            primary: 'primary',
-            danger: 'danger',
-            secondary: 'secondary',
-            warning: 'warning'
-          }"
-        />
-        <HstSelect
-          v-model="state.iconPosition"
-          title="iconPosition"
-          :options="{
-            right: 'right',
-            left: 'left',
-            top: 'top',
-            bottom: 'bottom'
-          }"
-        />
-        <HstSelect
-          v-model="state.rounded"
-          title="rounded"
-          :options="{
-            '2xl': '2xl',
-            lg: 'lg',
-            full: 'full'
-          }"
-        />
-        <HstCheckbox v-model="state.disabled" title="disabled" />
-        <HstCheckbox v-model="state.hasIcon" title="hasIcon" />
-      </template> -->
     </Variant>
+    <template #controls="{ state }">
+      <HstText v-model="state.label" title="label" />
+      <HstSelect
+        v-model="state.type"
+        title="type"
+        :options="{
+          fill: 'fill',
+          outline: 'outline'
+        }"
+      />
+      <HstSelect
+        v-model="state.iconPosition"
+        title="icon position"
+        :options="{
+          right: 'right',
+          left: 'left',
+          top: 'top',
+          bottom: 'bottom'
+        }"
+      />
+      <HstCheckbox v-model="state.disabled" title="disabled" />
+      <HstCheckbox v-model="state.hasIcon" title="hasIcon" />
+    </template>
   </Story>
 </template>
 
