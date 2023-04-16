@@ -5,7 +5,7 @@ import { TestIcon } from 'ircolor-uikit/src/components/'
 const buttonStates = () => ({
   label: 'متن تست',
   variant: 'primary',
-  rounded: '2xl',
+  rounded: 'default',
   type: 'fill',
   iconPosition: 'left',
   hasIcon: false,
@@ -66,10 +66,10 @@ const buttonStates = () => ({
         v-model="state.rounded"
         title="rounded"
         :options="{
-          '2xl': '2xl',
+          default: 'default',
           lg: 'lg',
+          '2xl': '2xl',
           full: 'full',
-          rounded: 'rounded'
         }"
       />
       <HstCheckbox v-model="state.disabled" title="disabled" />
