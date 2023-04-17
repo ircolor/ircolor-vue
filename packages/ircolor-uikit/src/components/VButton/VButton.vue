@@ -4,7 +4,6 @@
 import { computed, toRef } from 'vue'
 import { useRadius } from '../../composables'
 
-//#region INTERFACES
 interface VButtonProps {
   label?: string
   variant?: 'primary' | 'secondary' | 'danger' | 'warning'
@@ -14,9 +13,7 @@ interface VButtonProps {
   hasIcon?: boolean
   disabled?: boolean
 }
-//#endregion
 
-//#region PROPS
 const props = withDefaults(defineProps<VButtonProps>(), {
   label: '',
   variant: 'primary',
@@ -26,9 +23,7 @@ const props = withDefaults(defineProps<VButtonProps>(), {
   hasIcon: false,
   disabled: false
 })
-// #endregion
 
-//#region COMPUTED
 const radiusClass = useRadius(toRef(props, 'rounded'))
 
 

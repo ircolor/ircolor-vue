@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { logEvent } from 'histoire/client'
-import { VButton } from 'ircolor-uikit/src/components/index'
-import { TestIcon } from 'ircolor-uikit/src/components/'
+import { VButton } from 'ircolor-uikit/src/components'
+import { TestIcon } from 'ircolor-uikit/src/components'
 const buttonStates = () => ({
   label: 'متن تست',
   variant: 'primary',
