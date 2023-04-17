@@ -11,9 +11,6 @@
     },
     "dev": {
       "cache": false
-    },
-    "docs#dev": {
-      "dependsOn": ["ircolor-uikit#build"]
     }
   }
 }

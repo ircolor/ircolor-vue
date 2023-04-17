@@ -1,7 +1,8 @@
 <script setup lang="ts">
 // NOTE: This component is useless until finding a suitable solution to use the icon font
 // import { VIcon } from '../VIcon';
-import { computed } from 'vue'
+import { computed, toRef } from 'vue'
+import { useRadius } from '../../composables'
 
 //#region INTERFACES
 interface VButtonProps {
@@ -9,7 +10,7 @@ interface VButtonProps {
   variant?: 'primary' | 'secondary' | 'danger' | 'warning'
   iconPosition?: 'right' | 'left' | 'top' | 'bottom'
   type?: 'fill' | 'outline'
-  rounded?: '2xl' | 'lg' | 'full'
+  rounded?: '2xl' | 'lg' | 'full' | 'default'
   hasIcon?: boolean
   disabled?: boolean
 }
@@ -19,7 +20,7 @@ interface VButtonProps {
 const props = withDefaults(defineProps<VButtonProps>(), {
   label: '',
   variant: 'primary',
-  rounded: '2xl',
+  rounded: 'default',
   type: 'fill',
   iconPosition: 'left',
   hasIcon: false,
@@ -28,25 +29,8 @@ const props = withDefaults(defineProps<VButtonProps>(), {
 // #endregion
 
 //#region COMPUTED
-const roundedClass = computed(() => {
-  let roundedValue = ''
-  switch (props.rounded) {
-    case '2xl':
-      roundedValue = 'rounded-2xl'
-      break
-    case 'lg':
-      roundedValue = 'rounded-lg'
-      break
-    case 'full':
-      roundedValue = 'rounded-full'
-      break
+const radiusClass = useRadius(toRef(props, 'rounded'))
 
-    default:
-      roundedValue = 'rounded'
-      break
-  }
-  return roundedValue
-})
 
 const typeClass = computed(() => {
   let buttonType = ''
@@ -106,9 +90,9 @@ const iconPositionClass = computed(() => {
   return iconPosition
 })
 
-const withIconClass = computed(()=>{
-  return props.hasIcon ? 'flex items-center gap-2 justify-between' :''
-});
+const withIconClass = computed(() => {
+  return props.hasIcon ? 'flex items-center gap-2 justify-between' : ''
+})
 
 const onlyIconClass = computed(() => {
   // when only we have icon
@@ -119,14 +103,14 @@ const onlyIconClass = computed(() => {
 
 <template>
   <button
-    :class="[roundedClass, typeClass, iconPositionClass, onlyIconClass, withIconClass]"
-    class="w-full"
+    :class="[radiusClass, typeClass, iconPositionClass, onlyIconClass, withIconClass]"
+    class="w-full font-medium"
     :disabled="props.disabled"
   >
     {{ props.label }}
     <!-- ? Test Icon -->
-    <slot v-if="props.hasIcon" name='icon'/>
-    
+    <slot v-if="props.hasIcon" name="icon" />
+
     <!-- <VIcon icon="heart"></VIcon> -->
   </button>
 </template>
