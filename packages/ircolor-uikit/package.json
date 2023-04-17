@@ -4,8 +4,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "scripts": {
-    "playground":"vite",
-    "dev": "run-p type-check build-only",
+    "dev": "vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build --emptyOutDir --watch",

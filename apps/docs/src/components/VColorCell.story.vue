@@ -9,7 +9,7 @@ const VColorCellState = () => ({
 })
 </script>
 <template>
-  <Story title="VColorCell" :layout="{ type: 'single', width: '50%' }">
+  <Story title="VColorCell" :layout="{ type: 'grid', width: '80%' }">
         <Variant title="Playground" :init-state="VColorCellState" auto-props-disabled>
           <template #default="{ state }">
             <VColorCell :color="state.color" :width="state.width" :height="state.height" :rounded="state.rounded">
