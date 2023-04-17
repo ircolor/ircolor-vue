@@ -21,7 +21,7 @@ import postcss from 'postcss'
 import tailwindcss from 'tailwindcss'
 
 export default defineConfig({
-  root:"./",
+  root:"./playground",
   plugins: [vue()],
   resolve: {
     alias: {

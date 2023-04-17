@@ -4,8 +4,9 @@
     "env.d.ts",
     "src/**/*",
     "src/**/*.vue",
-    "src/main.ts",
-    "src/App.vue",
+    "playground/main.ts",
+    "playground/**/*.vue",
+    "playground/App.vue",
     "package.json",
   ],
   "compilerOptions": {
