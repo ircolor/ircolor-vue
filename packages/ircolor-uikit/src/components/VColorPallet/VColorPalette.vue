@@ -22,20 +22,9 @@ const size = useDimension(toRef(props, 'width'), toRef(props, 'height'))
   <div class="flex flex-row overflow-hidden w-min" :class="[borderRadius]">
     <div
       v-for="(color, index) in props.colors"
-      class="single-color"
       :key="index"
       :style="[size, 'background-color:' + color]"
     ></div>
   </div>
 </template>
 
-<style lang="css" scoped>
-.single-color {
-  width: 75.25px;
-  height: 150px;
-}
-.colors-wrapper {
-  width: 100%;
-  height: 100px;
-}
-</style>
