@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRadius, useDimension, usePosition } from '../../composables'
-import { toRef, ref, computed } from 'vue'
+import { toRef, ref, computed, reactive } from 'vue'
 import { TestIcon } from '../VIcon'
 
 interface VSearchInputProps {
@@ -11,6 +11,7 @@ interface VSearchInputProps {
   hasIcon?: boolean
   width: number
   height: number
+  canExpand: boolean
 }
 const props = withDefaults(defineProps<VSearchInputProps>(), {
   label: 'search',
@@ -19,11 +20,13 @@ const props = withDefaults(defineProps<VSearchInputProps>(), {
   hasBorder: true,
   hasIcon: true,
   width: 100,
-  height: 40
+  height: 40,
+  canExpand: true
 })
+let increasedWidth = toRef(props, 'width')
 const searchedText = ref('')
 const radiusClass = useRadius(toRef(props, 'rounded'))
-let size = useDimension(toRef(props, 'width'), toRef(props, 'height'))
+let size = useDimension(increasedWidth, toRef(props, 'height'))
 const position = usePosition(toRef(props, 'iconPosition'))
 
 const borderClass = computed(() => {
@@ -31,16 +34,6 @@ const borderClass = computed(() => {
     return 'border border-solid border-gray-100'
   }
   return 'shadow-2xl'
-})
-const iconClass = computed(() => {
-  if (props.hasIcon) {
-    if (props.iconPosition === 'right') {
-      return 'right'
-    } else {
-      return 'left'
-    }
-  }
-  return ''
 })
 const placeholderClass = computed(() => {
   if (props.hasIcon) {
@@ -52,19 +45,34 @@ const placeholderClass = computed(() => {
   }
   return ''
 })
+const state = reactive({
+  width: 0
+})
+const focusHandler = () => {
+  if (props.canExpand) {
+    state.width = props.width + 100
+    size = useDimension(toRef(state, 'width'), toRef(props, 'height'))
+  }
+}
+const blurHandler = () => {
+  if (props.canExpand) {
+    state.width = props.width
+    size = useDimension(toRef(state, 'width'), toRef(props, 'height'))
+  }
+}
 </script>
 <template>
-  <div class="relative inline-block" :class="position" :style="size">
+  <div class="input-container" :class="[borderClass, radiusClass, position]" :style="size">
     <slot v-if="props.hasIcon" name="icon">
-      <TestIcon :class="iconClass"></TestIcon>
+      <TestIcon></TestIcon>
     </slot>
     <input
       type="text"
       v-model="searchedText"
       :placeholder="props.label"
-      :style="size"
-      :class="[borderClass, radiusClass]"
       :dir="placeholderClass"
+      @focus="focusHandler"
+      @blur="blurHandler"
     />
   </div>
 </template>
@@ -75,15 +83,15 @@ input[type='text'] {
   box-sizing: border-box;
   transition: 0.3s;
   padding: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: black;
 }
-.right {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-.left {
-  position: absolute;
-  left: 10px;
-  top: 10px;
+.input-container {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  background-color: white;
 }
 </style>

@@ -7,11 +7,12 @@ const searchInputStates = () => ({
   hasBorder: true,
   hasIcon: true,
   width: 100,
-  height: 40
+  height: 40,
+  canExpand: true
 })
 </script>
 <template>
-  <Story title="VSearchInput" >
+  <Story title="VSearchInput" :layout="{ type: 'grid', width: '80%' }">
     <Variant title="Playground" :init-state="searchInputStates" auto-props-disabled>
       <template #default="{ state }">
         <VSearchInput
@@ -22,6 +23,7 @@ const searchInputStates = () => ({
           :iconPosition="state.iconPosition"
           :hasBorder="state.hasBorder"
           :hasIcon="state.hasIcon"
+          :canExpand="state.canExpand"
         />
       </template>
     </Variant>
@@ -44,11 +46,12 @@ const searchInputStates = () => ({
         title="icon position"
         :options="{
           right: 'right',
-          left: 'left',
+          left: 'left'
         }"
       />
       <HstCheckbox v-model="state.hasIcon" title="hasIcon" />
       <HstCheckbox v-model="state.hasBorder" title="hasBorder" />
+      <HstCheckbox v-model="state.canExpand" title="canExpand" />
     </template>
   </Story>
 </template>
