@@ -9,8 +9,8 @@ const searchInputStates = () => ({
   width: 100,
   height: 40,
   expandable: true,
-  placeholderDirection: 'ltr',
-  modelValue: 'kimia',
+  textDirection: 'ltr',
+  modelValue: 'searched text',
   expandLength: 100
 })
 </script>
@@ -27,7 +27,7 @@ const searchInputStates = () => ({
           :outlineStyle="state.outlineStyle"
           :hasIcon="state.hasIcon"
           :expandable="state.expandable"
-          :placeholderDirection="state.placeholderDirection"
+          :textDirection="state.textDirection"
           v-model="state.modelValue"
           :expandLength="state.expandLength"
         />
@@ -60,8 +60,8 @@ const searchInputStates = () => ({
       <HstCheckbox v-model="state.hasIcon" title="hasIcon" />
       <HstCheckbox v-model="state.expandable" title="expandable" />
       <HstSelect
-        v-model="state.placeholderDirection"
-        title="placeholderDirection"
+        v-model="state.textDirection"
+        title="textDirection"
         :options="{
           rtl: 'rtl',
           ltr: 'ltr',

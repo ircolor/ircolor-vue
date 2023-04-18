@@ -12,7 +12,7 @@ interface VSearchInputProps {
   width: number
   height: number
   expandable: boolean
-  placeholderDirection: 'rtl' | 'ltr' | 'center'
+  textDirection: 'rtl' | 'ltr' | 'center'
   modelValue: string
   expandLength: number
 }
@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<VSearchInputProps>(), {
   height: 40,
   expandable: true,
   modelValue: '',
-  placeholderDirection: 'ltr',
+  textDirection: 'ltr',
   expandLength: 100
 })
 let increaseValue = ref(0)
@@ -65,10 +65,10 @@ const message = computed({
       type="text"
       v-model="message"
       :placeholder="props.placeholder"
-      :dir="props.placeholderDirection"
+      :dir="props.textDirection"
       @focus="expandInputLength"
       @blur="shrinkInputLength"
-      :class="{ 'text-center': props.placeholderDirection === 'center' }"
+      :class="{ 'text-center': props.textDirection === 'center' }"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
     />
     <slot v-if="props.hasIcon" name="icon">
