@@ -31,12 +31,12 @@ const props = withDefaults(defineProps<VSearchInputProps>(), {
 })
 let increaseValue = ref(0)
 const radiusClass = useRadius(toRef(props, 'radius'))
-let size = computed(() => {
+let size = computed<string>(() => {
   return `width:${props.width + increaseValue.value}px; height:${props.height}px`
 })
 const position = usePosition(toRef(props, 'iconPosition'))
 
-const outlineStyleClass = computed(() => {
+const outlineStyleClass = computed<string>(() => {
   if (props.outlineStyle === 'border') {
     return 'border border-solid border-gray-100'
   }
@@ -54,7 +54,7 @@ const shrinkInputLength = () => {
   }
 }
 const emit = defineEmits(['update:modelValue'])
-const message = computed({
+const message = computed<string>({
   get: () => props.modelValue,
   set: (value) => emit('update:modelValue', value)
 })
