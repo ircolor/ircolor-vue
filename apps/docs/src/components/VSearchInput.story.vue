@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { VSearchInput } from 'ircolor-uikit/src/components/index'
 const searchInputStates = () => ({
-  label: 'search',
+  placeholder: 'search',
   iconPosition: 'right',
-  rounded: '2xl',
-  hasBorder: true,
+  radius: '2xl',
+  outlineStyle: 'border',
   hasIcon: true,
   width: 100,
   height: 40,
-  canExpand: true
+  expandable: true,
+  placeholderDirection: 'ltr',
+  modelValue: 'kimia',
+  expandLength: 100
 })
 </script>
 <template>
@@ -18,22 +21,27 @@ const searchInputStates = () => ({
         <VSearchInput
           :width="state.width"
           :height="state.height"
-          :rounded="state.rounded"
-          :label="state.label"
+          :radius="state.radius"
+          :placeholder="state.placeholder"
           :iconPosition="state.iconPosition"
-          :hasBorder="state.hasBorder"
+          :outlineStyle="state.outlineStyle"
           :hasIcon="state.hasIcon"
-          :canExpand="state.canExpand"
+          :expandable="state.expandable"
+          :placeholderDirection="state.placeholderDirection"
+          v-model="state.modelValue"
+          :expandLength="state.expandLength"
         />
       </template>
     </Variant>
     <template #controls="{ state }">
-      <HstText v-model="state.label" title="label" />
+      <HstText v-model="state.placeholder" title="placeholder" />
+      <HstText v-model="state.modelValue" title="modelValue" />
       <HstNumber v-model="state.width" title="width" />
+      <HstNumber v-model="state.expandLength" title="expandLength" />
       <HstNumber v-model="state.height" title="height" />
       <HstSelect
-        v-model="state.rounded"
-        title="rounded"
+        v-model="state.radius"
+        title="radius"
         :options="{
           default: 'default',
           lg: 'lg',
@@ -50,8 +58,24 @@ const searchInputStates = () => ({
         }"
       />
       <HstCheckbox v-model="state.hasIcon" title="hasIcon" />
-      <HstCheckbox v-model="state.hasBorder" title="hasBorder" />
-      <HstCheckbox v-model="state.canExpand" title="canExpand" />
+      <HstCheckbox v-model="state.expandable" title="expandable" />
+      <HstSelect
+        v-model="state.placeholderDirection"
+        title="placeholderDirection"
+        :options="{
+          rtl: 'rtl',
+          ltr: 'ltr',
+          center: ''
+        }"
+      />
+      <HstSelect
+        v-model="state.outlineStyle"
+        title="outlineStyle"
+        :options="{
+          border: 'border',
+          shadow: 'shadow'
+        }"
+      />
     </template>
   </Story>
 </template>

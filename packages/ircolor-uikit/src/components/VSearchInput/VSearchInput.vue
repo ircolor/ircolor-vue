@@ -1,79 +1,79 @@
 <script setup lang="ts">
 import { useRadius, useDimension, usePosition } from '../../composables'
-import { toRef, ref, computed, reactive } from 'vue'
+import { toRef, computed, reactive } from 'vue'
 import { TestIcon } from '../VIcon'
 
 interface VSearchInputProps {
-  label: string
+  placeholder: string
   iconPosition?: 'right' | 'left'
-  rounded?: '2xl' | 'lg' | 'full' | 'default'
-  hasBorder?: boolean
+  radius?: '2xl' | 'lg' | 'full' | 'default'
+  outlineStyle?: 'border' | 'shadow'
   hasIcon?: boolean
   width: number
   height: number
-  canExpand: boolean
+  expandable: boolean
+  placeholderDirection: 'rtl' | 'ltr' | 'center'
+  modelValue: string
+  expandLength: number
 }
 const props = withDefaults(defineProps<VSearchInputProps>(), {
-  label: 'search',
+  placeholder: 'search',
   iconPosition: 'right',
-  rounded: '2xl',
-  hasBorder: true,
+  radius: '2xl',
+  outlineStyle: 'border',
   hasIcon: true,
   width: 100,
-  height: 40,
-  canExpand: true
+  height: 80,
+  expandable: true,
+  modelValue: '',
+  placeholderDirection: 'ltr',
+  expandLength: 100
 })
-let increasedWidth = toRef(props, 'width')
-const searchedText = ref('')
-const radiusClass = useRadius(toRef(props, 'rounded'))
-let size = useDimension(increasedWidth, toRef(props, 'height'))
+const mutateProps = reactive({
+  width: props.width
+})
+const radiusClass = useRadius(toRef(props, 'radius'))
+let size = useDimension(toRef(mutateProps, 'width'), toRef(props, 'height'))
 const position = usePosition(toRef(props, 'iconPosition'))
 
-const borderClass = computed(() => {
-  if (props.hasBorder) {
+const outlineStyleClass = computed(() => {
+  if (props.outlineStyle === 'border') {
     return 'border border-solid border-gray-100'
   }
   return 'shadow-2xl'
 })
-const placeholderClass = computed(() => {
-  if (props.hasIcon) {
-    if (props.iconPosition === 'right') {
-      return 'ltr'
-    } else {
-      return 'rtl'
-    }
-  }
-  return ''
-})
-const state = reactive({
-  width: 0
-})
-const focusHandler = () => {
-  if (props.canExpand) {
-    state.width = props.width + 100
-    size = useDimension(toRef(state, 'width'), toRef(props, 'height'))
+
+const expandInputLength = () => {
+  if (props.expandable) {
+    mutateProps.width = props.width + props.expandLength
   }
 }
-const blurHandler = () => {
-  if (props.canExpand) {
-    state.width = props.width
-    size = useDimension(toRef(state, 'width'), toRef(props, 'height'))
+const shrinkInputLength = () => {
+  if (props.expandable) {
+    mutateProps.width = props.width
   }
 }
+const emit = defineEmits(['update:modelValue'])
+const message = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value)
+})
 </script>
 <template>
-  <div class="input-container" :class="[borderClass, radiusClass, position]" :style="size">
+  <div class="input-container" :class="[outlineStyleClass, radiusClass, position]" :style="size">
+    <input
+      type="text"
+      v-model="message"
+      :placeholder="props.placeholder"
+      :dir="props.placeholderDirection"
+      @focus="expandInputLength"
+      @blur="shrinkInputLength"
+      :class="{ 'text-center': props.placeholderDirection === 'center' }"
+      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+    />
     <slot v-if="props.hasIcon" name="icon">
       <TestIcon></TestIcon>
     </slot>
-    <input
-      type="text"
-      v-model="searchedText"
-      :placeholder="props.label"
-      :dir="placeholderClass"
-      @focus="focusHandler"
-      @blur="blurHandler"
-    />
   </div>
 </template>
 
@@ -81,17 +81,21 @@ const blurHandler = () => {
 input[type='text'] {
   outline: none;
   box-sizing: border-box;
-  transition: 0.3s;
-  padding: 10px;
+  transition: width 2s;
+  padding: 10px 5px;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: transparent;
   color: black;
 }
 .input-container {
   display: flex;
   justify-content: center;
-  padding: 5px;
+  align-items: center;
+  padding: 6px;
   background-color: white;
+}
+.text-center {
+  text-align: center;
 }
 </style>
