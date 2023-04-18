@@ -65,7 +65,7 @@ const searchInputStates = () => ({
         :options="{
           rtl: 'rtl',
           ltr: 'ltr',
-          center: ''
+          center: 'center'
         }"
       />
       <HstSelect

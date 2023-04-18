@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRadius, useDimension, usePosition } from '../../composables'
-import { toRef, computed, reactive } from 'vue'
+import { toRef, computed, ref } from 'vue'
 import { TestIcon } from '../VIcon'
 
 interface VSearchInputProps {
@@ -23,17 +23,17 @@ const props = withDefaults(defineProps<VSearchInputProps>(), {
   outlineStyle: 'border',
   hasIcon: true,
   width: 100,
-  height: 80,
+  height: 40,
   expandable: true,
   modelValue: '',
   placeholderDirection: 'ltr',
   expandLength: 100
 })
-const mutateProps = reactive({
-  width: props.width
-})
+let increaseValue = ref(0)
 const radiusClass = useRadius(toRef(props, 'radius'))
-let size = useDimension(toRef(mutateProps, 'width'), toRef(props, 'height'))
+let size = computed(() => {
+  return `width:${props.width + increaseValue.value}px; height:${props.height}px`
+})
 const position = usePosition(toRef(props, 'iconPosition'))
 
 const outlineStyleClass = computed(() => {
@@ -42,15 +42,15 @@ const outlineStyleClass = computed(() => {
   }
   return 'shadow-2xl'
 })
-
 const expandInputLength = () => {
   if (props.expandable) {
-    mutateProps.width = props.width + props.expandLength
+    increaseValue.value = props.expandLength
   }
 }
+
 const shrinkInputLength = () => {
   if (props.expandable) {
-    mutateProps.width = props.width
+    increaseValue.value = 0
   }
 }
 const emit = defineEmits(['update:modelValue'])
@@ -81,7 +81,7 @@ const message = computed({
 input[type='text'] {
   outline: none;
   box-sizing: border-box;
-  transition: width 2s;
+  transition: width 5s;
   padding: 10px 5px;
   width: 100%;
   height: 100%;
