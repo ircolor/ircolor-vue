@@ -1,61 +1,61 @@
 <script setup lang="ts">
-import { useRadius, useDimension, usePosition } from '../../composables'
+import { useRadius, usePosition } from '../../composables'
 import { toRef, computed, ref } from 'vue'
 import { TestIcon } from '../VIcon'
 
-interface VSearchInputProps {
+interface SearchInputProps {
   placeholder: string
   iconPosition?: 'right' | 'left'
   radius?: '2xl' | 'lg' | 'full' | 'default'
   hasIcon?: boolean
   width: number
   height: number
-  expandable: boolean
+  isExpandable: boolean
   textDirection: 'rtl' | 'ltr' | 'center'
   modelValue: string
   expandLength: number
 }
-const props = withDefaults(defineProps<VSearchInputProps>(), {
+const props = withDefaults(defineProps<SearchInputProps>(), {
   placeholder: 'search',
   iconPosition: 'right',
   radius: '2xl',
   hasIcon: true,
   width: 100,
   height: 40,
-  expandable: true,
+  isExpandable: true,
   modelValue: '',
   textDirection: 'ltr',
   expandLength: 100
 })
-let increaseValue = ref(0)
-const radiusClass = useRadius(toRef(props, 'radius'))
-let size = computed<string>(() => {
-  return `width:${props.width + increaseValue.value}px; height:${props.height}px`
+const DYNAMIC_LENGTH = ref(0)
+const RADIUS_CLASS = useRadius(toRef(props, 'radius'))
+const SIZE = computed<string>(() => {
+  return `width:${props.width + DYNAMIC_LENGTH.value}px; height:${props.height}px`
 })
-const position = usePosition(toRef(props, 'iconPosition'))
+const POSITION_CLASS = usePosition(toRef(props, 'iconPosition'))
 
 const expandInputLength = () => {
-  if (props.expandable) {
-    increaseValue.value = props.expandLength
+  if (props.isExpandable) {
+    DYNAMIC_LENGTH.value = props.expandLength
   }
 }
 
 const shrinkInputLength = () => {
-  if (props.expandable) {
-    increaseValue.value = 0
+  if (props.isExpandable) {
+    DYNAMIC_LENGTH.value = 0
   }
 }
 const emit = defineEmits(['update:modelValue'])
-const message = computed<string>({
+const TEXT = computed<string>({
   get: () => props.modelValue,
   set: (value) => emit('update:modelValue', value)
 })
 </script>
 <template>
-  <div class="input-container" :class="[radiusClass, position]" :style="size">
+  <div class="search-input" :class="[RADIUS_CLASS, POSITION_CLASS]" :style="SIZE">
     <input
       type="text"
-      v-model="message"
+      v-model="TEXT"
       :placeholder="props.placeholder"
       :dir="props.textDirection"
       @focus="expandInputLength"
@@ -80,7 +80,7 @@ input[type='text'] {
   background-color: transparent;
   color: black;
 }
-.input-container {
+.search-input {
   display: flex;
   justify-content: center;
   align-items: center;

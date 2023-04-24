@@ -7,7 +7,7 @@ const searchInputStates = () => ({
   hasIcon: true,
   width: 100,
   height: 40,
-  expandable: true,
+  isExpandable: true,
   textDirection: 'ltr',
   modelValue: 'searched text',
   expandLength: 100
@@ -24,7 +24,7 @@ const searchInputStates = () => ({
           :placeholder="state.placeholder"
           :iconPosition="state.iconPosition"
           :hasIcon="state.hasIcon"
-          :expandable="state.expandable"
+          :isExpandable="state.isExpandable"
           :textDirection="state.textDirection"
           v-model="state.modelValue"
           :expandLength="state.expandLength"
@@ -56,7 +56,7 @@ const searchInputStates = () => ({
         }"
       />
       <HstCheckbox v-model="state.hasIcon" title="hasIcon" />
-      <HstCheckbox v-model="state.expandable" title="expandable" />
+      <HstCheckbox v-model="state.isExpandable" title="isExpandable" />
       <HstSelect
         v-model="state.textDirection"
         title="textDirection"
