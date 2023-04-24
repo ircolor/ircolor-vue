@@ -19,6 +19,8 @@ The Naming Convention Project is an effort to identify, collect and maintain a s
     + [Templates components](#templates-components)
        
   - [Computed](#computed)
+  
+  - [Hooks](#hooks)
 
   - [Props](#props)
 
@@ -207,6 +209,11 @@ Single Instance components are the ones **that are used only once per view**. Fo
 - If the function is using for creating  **css class** it should be suffix by the word **class**
 - Preferably a verb e.g. "getName()", "buy()", "count()"
 
+## Hooks
+
+#### camelCase
+- hooks are functions so they follow functions writing style
+- they should be prefixed by `use` e.g. "useRadius"
 
 ## Props
 
