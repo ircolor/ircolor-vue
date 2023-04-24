@@ -1,2 +1,4 @@
 import VIconC from './VIcon.vue'
-export const VIcon = VIconC
+import TestIconC from './TestIcon.vue'
+export const VIcon = VIconC 
+export const TestIcon =  TestIconC 

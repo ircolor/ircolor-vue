@@ -1,8 +1,14 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue",
-  "package.json",
-   "playground/main.ts", "playground/main.ts", "playground/App.vue"],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "playground/main.ts",
+    "playground/**/*.vue",
+    "playground/App.vue",
+    "package.json",
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

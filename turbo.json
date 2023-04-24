@@ -11,9 +11,6 @@
     },
     "dev": {
       "cache": false
-    },
-    "ircolor-uikit#build": {
-      "inputs": []
     }
   }
 }
