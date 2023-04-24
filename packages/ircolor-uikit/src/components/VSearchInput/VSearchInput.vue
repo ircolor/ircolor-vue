@@ -7,7 +7,6 @@ interface VSearchInputProps {
   placeholder: string
   iconPosition?: 'right' | 'left'
   radius?: '2xl' | 'lg' | 'full' | 'default'
-  outlineStyle?: 'border' | 'shadow'
   hasIcon?: boolean
   width: number
   height: number
@@ -20,7 +19,6 @@ const props = withDefaults(defineProps<VSearchInputProps>(), {
   placeholder: 'search',
   iconPosition: 'right',
   radius: '2xl',
-  outlineStyle: 'border',
   hasIcon: true,
   width: 100,
   height: 40,
@@ -36,12 +34,6 @@ let size = computed<string>(() => {
 })
 const position = usePosition(toRef(props, 'iconPosition'))
 
-const outlineStyleClass = computed<string>(() => {
-  if (props.outlineStyle === 'border') {
-    return 'border border-solid border-gray-100'
-  }
-  return 'shadow-2xl'
-})
 const expandInputLength = () => {
   if (props.expandable) {
     increaseValue.value = props.expandLength
@@ -60,7 +52,7 @@ const message = computed<string>({
 })
 </script>
 <template>
-  <div class="input-container" :class="[outlineStyleClass, radiusClass, position]" :style="size">
+  <div class="input-container" :class="[radiusClass, position]" :style="size">
     <input
       type="text"
       v-model="message"

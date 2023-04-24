@@ -4,7 +4,6 @@ const searchInputStates = () => ({
   placeholder: 'search',
   iconPosition: 'right',
   radius: '2xl',
-  outlineStyle: 'border',
   hasIcon: true,
   width: 100,
   height: 40,
@@ -24,7 +23,6 @@ const searchInputStates = () => ({
           :radius="state.radius"
           :placeholder="state.placeholder"
           :iconPosition="state.iconPosition"
-          :outlineStyle="state.outlineStyle"
           :hasIcon="state.hasIcon"
           :expandable="state.expandable"
           :textDirection="state.textDirection"
@@ -66,14 +64,6 @@ const searchInputStates = () => ({
           rtl: 'rtl',
           ltr: 'ltr',
           center: 'center'
-        }"
-      />
-      <HstSelect
-        v-model="state.outlineStyle"
-        title="outlineStyle"
-        :options="{
-          border: 'border',
-          shadow: 'shadow'
         }"
       />
     </template>
