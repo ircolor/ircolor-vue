@@ -7,7 +7,7 @@ const avatarStatesImage = () => ({
   letterCount: '2',
   size: 50,
   lighten: 80,
-  rounded: 'lg'
+  radius: 'lg'
 })
 const avatarStatesName = () => ({
   src: '',
@@ -16,7 +16,7 @@ const avatarStatesName = () => ({
   letterCount: '2',
   size: 50,
   lighten: 80,
-  rounded: 'lg'
+  radius: 'lg'
 })
 const avatarStatesCustomBackground = () => ({
   src: '',
@@ -25,7 +25,7 @@ const avatarStatesCustomBackground = () => ({
   letterCount: '2',
   size: 50,
   lighten: 80,
-  rounded: 'lg'
+  radius: 'lg'
 })
 </script>
 <template>
@@ -39,7 +39,7 @@ const avatarStatesCustomBackground = () => ({
           :letterCount="state.letterCount"
           :size="state.size"
           :lighten="state.lighten"
-          :rounded="state.rounded"
+          :radius="state.radius"
         />
       </template>
     </Variant>
@@ -52,7 +52,7 @@ const avatarStatesCustomBackground = () => ({
           :letterCount="state.letterCount"
           :size="state.size"
           :lighten="state.lighten"
-          :rounded="state.rounded"
+          :radius="state.radius"
         />
       </template>
     </Variant>
@@ -65,7 +65,7 @@ const avatarStatesCustomBackground = () => ({
           :letterCount="state.letterCount"
           :size="state.size"
           :lighten="state.lighten"
-          :rounded="state.rounded"
+          :radius="state.radius"
         />
       </template>
     </Variant>
@@ -85,8 +85,8 @@ const avatarStatesCustomBackground = () => ({
       <HstNumber v-model="state.size" title="size" />
       <HstNumber v-model="state.lighten" title="lighten" />
       <HstSelect
-        v-model="state.rounded"
-        title="rounded"
+        v-model="state.radius"
+        title="radius"
         :options="{
           default: 'default',
           lg: 'lg',

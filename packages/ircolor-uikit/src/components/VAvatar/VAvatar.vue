@@ -7,28 +7,28 @@
 import { computed, toRef, ref } from 'vue'
 import { useDimension, useRadius } from '../../composables'
 
-interface VAvatarProps {
+interface AvatarProps {
   src?: string
   username?: string
   backgroundColor?: string
   letterCount?: 1 | 2 | 3
   size?: number
   lighten?: number
-  rounded?: '2xl' | 'lg' | 'full' | 'default'
+  radius?: '2xl' | 'lg' | 'full' | 'default'
 }
 
-const props = withDefaults(defineProps<VAvatarProps>(), {
+const props = withDefaults(defineProps<AvatarProps>(), {
   src: '',
   username: '',
   backgroundColor: '',
   letterCount: 2,
   size: 50,
   lighten: 80,
-  rounded: 'full'
+  radius: 'full'
 })
 
-const borderRadius = useRadius(toRef(props, 'rounded'))
-const size = useDimension(toRef(props, 'size'), toRef(props, 'size'))
+const radiusClass = useRadius(toRef(props, 'radius'))
+const sizeStyle = useDimension(toRef(props, 'size'), toRef(props, 'size'))
 
 const imgError = ref(false)
 const backgroundColors = [
@@ -104,7 +104,7 @@ const backgroundColor = computed(() => {
   }
 })
 
-const style = computed(() => {
+const avatarStyle = computed(() => {
   const style = {
     lineHeight: `${props.size + Math.floor(props.size / 20)}px`
   }
@@ -127,8 +127,8 @@ const style = computed(() => {
   <div>
     <div
       class="flex items-center font-bold justify-center text-center select-none"
-      :class="borderRadius"
-      :style="[size, style]"
+      :class="radiusClass"
+      :style="[sizeStyle, avatarStyle]"
       aria-hidden="true"
     >
       <img v-if="isImage" style="display: none;" :src="props.src" @error="onImgError" />
