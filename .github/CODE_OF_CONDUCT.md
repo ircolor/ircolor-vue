@@ -582,6 +582,14 @@ We are talking about branches that are disposable that can be created and delete
     
     -   experimental/dark-theme-support
 
+-   **Enhancement**
+    
+    A branch that neither fixesa bug nor adds a feature.
+ 
+    Examples:
+    
+    -   enhancement/project-structure
+
 -   **Build**
     
     A branch specifically for creating specific build artifacts or for doing code coverage runs.
