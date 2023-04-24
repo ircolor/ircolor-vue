@@ -1,2 +1,2 @@
-import VColorCellC from './VColorCell.vue'
-export const VColorCell = VColorCellC
+import VColorCellComponent from './VColorCell.vue'
+export const VColorCell = VColorCellComponent

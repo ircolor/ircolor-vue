@@ -2,7 +2,7 @@
 
 <script lang="ts" setup>
 // #region INTERFACE
-interface VIconProps {
+interface IconProps {
   icon: string
   tag?: 'i'
   color?: ''
@@ -11,7 +11,7 @@ interface VIconProps {
 //#endregion
 
 //#region PROPS
-const props = withDefaults(defineProps<VIconProps>(), {
+const props = withDefaults(defineProps<IconProps>(), {
   tag: 'i',
   color: '',
   attributes: ''

@@ -5,7 +5,7 @@ import { TestIcon } from 'ircolor-uikit/src/components/'
 const buttonStates = () => ({
   label: 'متن تست',
   variant: 'primary',
-  rounded: 'default',
+  radius: 'default',
   type: 'fill',
   iconPosition: 'left',
   hasIcon: false,
@@ -21,7 +21,7 @@ const buttonStates = () => ({
           :type="state.type"
           :variant="state.variant"
           :iconPosition="state.iconPosition"
-          :rounded="state.rounded"
+          :radius="state.radius"
           :disabled="state.disabled"
           :hasIcon="state.hasIcon"
           @click="logEvent('click', $event)"
@@ -63,8 +63,8 @@ const buttonStates = () => ({
         }"
       />
       <HstSelect
-        v-model="state.rounded"
-        title="rounded"
+        v-model="state.radius"
+        title="radius"
         :options="{
           default: 'default',
           lg: 'lg',

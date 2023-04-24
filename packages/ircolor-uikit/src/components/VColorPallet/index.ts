@@ -1,2 +1,2 @@
-import VColorPaletteC from './VColorPalette.vue'
-export const VColorPalette = VColorPaletteC
+import VColorPaletteComponent from './VColorPalette.vue'
+export const VColorPalette = VColorPaletteComponent
