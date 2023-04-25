@@ -2,6 +2,7 @@
 import { useRadius, usePosition } from '../../composables'
 import { toRef, computed, ref } from 'vue'
 import { TestIcon } from '../VIcon'
+import type { Ref, ComputedRef } from 'vue'
 
 interface SearchInputProps {
   placeholder: string
@@ -27,20 +28,20 @@ const props = withDefaults(defineProps<SearchInputProps>(), {
   textDirection: 'ltr',
   expandLength: 100
 })
-const DYNAMIC_LENGTH = ref(0)
-const RADIUS_CLASS = useRadius(toRef(props, 'radius'))
+const DYNAMIC_LENGTH: Ref<number> = ref(0)
+const RADIUS_CLASS: ComputedRef<string> = useRadius(toRef(props, 'radius'))
 const SIZE = computed<string>(() => {
   return `width:${props.width + DYNAMIC_LENGTH.value}px; height:${props.height}px`
 })
-const POSITION_CLASS = usePosition(toRef(props, 'iconPosition'))
+const POSITION_CLASS: ComputedRef<string> = usePosition(toRef(props, 'iconPosition'))
 
-const expandInputLength = () => {
+const expandInputLength = (): void => {
   if (props.isExpandable) {
     DYNAMIC_LENGTH.value = props.expandLength
   }
 }
 
-const shrinkInputLength = () => {
+const shrinkInputLength = (): void => {
   if (props.isExpandable) {
     DYNAMIC_LENGTH.value = 0
   }
