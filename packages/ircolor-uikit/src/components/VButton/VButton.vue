@@ -2,7 +2,7 @@
 // NOTE: This component is useless until finding a suitable solution to use the icon font
 // import { VIcon } from '../VIcon';
 import { computed, toRef } from 'vue'
-import { useRadius } from '../../composables'
+import { useRadius, usePosition } from '../../composables'
 
 //#region INTERFACES
 interface ButtonProps {
@@ -70,25 +70,8 @@ const typeClass = computed(() => {
   }
 })
 
-const iconPositionClass = computed(() => {
-  let iconPosition = ''
-  switch (props.iconPosition) {
-    case 'top':
-      iconPosition = 'flex-col-reverse'
-      break
-    case 'bottom':
-      iconPosition = 'flex-col'
-      break
-    case 'left':
-      iconPosition = 'flex-row-reverse'
-      break
+const position = usePosition(toRef(props, 'iconPosition'))
 
-    default:
-      iconPosition = ''
-      break
-  }
-  return iconPosition
-})
 
 const withIconClass = computed(() => {
   return props.hasIcon ? 'flex items-center gap-2 justify-between' : ''
@@ -103,7 +86,7 @@ const onlyIconClass = computed(() => {
 
 <template>
   <button
-    :class="[radiusClass, typeClass, iconPositionClass, onlyIconClass, withIconClass]"
+    :class="[radiusClass, typeClass, position, onlyIconClass, withIconClass]"
     class="w-full font-medium"
     :disabled="props.disabled"
   >
