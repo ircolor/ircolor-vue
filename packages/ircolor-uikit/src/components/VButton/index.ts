@@ -1,2 +1,2 @@
-import VButtonC from './VButton.vue'
-export const VButton = VButtonC
+import VButtonComponent from './VButton.vue'
+export const VButton = VButtonComponent

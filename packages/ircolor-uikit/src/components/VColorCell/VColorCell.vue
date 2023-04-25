@@ -2,29 +2,29 @@
 import { toRef } from 'vue'
 import { useRadius, useDimension } from '../../composables'
 
-interface VColorCubeProps {
+interface ColorCubeProps {
   color: string
   width: number
   height: number
-  rounded: '2xl' | 'lg' | 'full' | 'default'
+  radius: '2xl' | 'lg' | 'full' | 'default'
 }
 
 
 
-const props = withDefaults(defineProps<VColorCubeProps>(), {
+const props = withDefaults(defineProps<ColorCubeProps>(), {
   color: '#95E1D3',
   width: 12,
   height: 12,
-  rounded: 'lg'
+  radius: 'lg'
 })
 
-const borderRadius = useRadius(toRef(props, 'rounded'))
+const radiusClass = useRadius(toRef(props, 'radius'))
+const sizeStyle = useDimension(toRef(props, 'width'), toRef(props, 'height'))
 const backgroundColor = toRef(props, 'color')
-const size = useDimension(toRef(props, 'width'), toRef(props, 'height'))
 </script>
 
 <template>
-  <div class="cube-color" :class="[borderRadius]" :style="size"></div>
+  <div class="cube-color" :class="[radiusClass]" :style="sizeStyle"></div>
 </template>
 
 <style lang="css" scoped>

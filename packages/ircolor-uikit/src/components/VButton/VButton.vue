@@ -5,22 +5,22 @@ import { computed, toRef } from 'vue'
 import { useRadius, usePosition } from '../../composables'
 
 //#region INTERFACES
-interface VButtonProps {
+interface ButtonProps {
   label?: string
   variant?: 'primary' | 'secondary' | 'danger' | 'warning'
   iconPosition?: 'right' | 'left' | 'top' | 'bottom'
   type?: 'fill' | 'outline'
-  rounded?: '2xl' | 'lg' | 'full' | 'default'
+  radius?: '2xl' | 'lg' | 'full' | 'default'
   hasIcon?: boolean
   disabled?: boolean
 }
 //#endregion
 
 //#region PROPS
-const props = withDefaults(defineProps<VButtonProps>(), {
+const props = withDefaults(defineProps<ButtonProps>(), {
   label: '',
   variant: 'primary',
-  rounded: 'default',
+  radius: 'default',
   type: 'fill',
   iconPosition: 'left',
   hasIcon: false,
@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<VButtonProps>(), {
 // #endregion
 
 //#region COMPUTED
-const radiusClass = useRadius(toRef(props, 'rounded'))
+const radiusClass = useRadius(toRef(props, 'radius'))
 
 
 const typeClass = computed(() => {
