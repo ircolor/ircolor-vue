@@ -1,0 +1,30 @@
+{
+  "name": "ircolor-icons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js && fontello-cli install --font ./dist/font --css ./dist/css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "cheerio": "1.0.0-rc.12",
+    "csv-writer": "^1.6.0",
+    "fontkit": "^2.0.2",
+    "icon-font-generator": "^2.1.11",
+    "svg2ttf": "^6.0.3",
+    "svgicons2svgfont": "^12.0.0",
+    "ttf2eot": "^3.1.0",
+    "ttf2woff": "^3.0.0",
+    "ttf2woff2": "^5.0.0",
+    "webfont": "^11.2.26",
+    "xml2js": "^0.5.0",
+    "xmldom": "^0.6.0"
+  },
+  "devDependencies": {
+    "webfonts-generator": "^0.4.0"
+  }
+}
